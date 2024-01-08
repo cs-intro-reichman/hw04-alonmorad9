@@ -37,6 +37,30 @@ public class ArrayOps {
             }
         }
         return secondMax;
+
+        // chatgpt code:
+        /*
+         * def find_second_largest(numbers):
+    # Initialize the largest and second largest with minimum possible values
+    largest = second_largest = float('-inf')
+
+    # Traverse through all the numbers in the array
+    for num in numbers:
+        # Update the largest and second largest if needed
+        if num > largest:
+            second_largest = largest  # Update second largest to the old largest
+            largest = num  # Update largest to the new largest
+        elif largest > num > second_largest:
+            # Update second largest if the number is between largest and second largest
+            second_largest = num
+
+    return second_largest
+
+# Example usage:
+example_array = [3, 5, 7, 7, 5]
+find_second_largest(example_array)
+
+         */
     }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
