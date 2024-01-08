@@ -4,8 +4,16 @@ public class ArrayOps {
     }
     
     public static int findMissingInt (int [] array) {
-        // Write your code here:
-        return -1;
+        int n = array.length;
+        int sumArr = 0;
+        int sumGen = 0;
+        int missingInt;
+        for (int i = 0; i < n; i++) {
+            sumArr = sumArr + array[i];
+            sumGen = sumGen + i;
+        }
+        missingInt = sumGen - sumArr;
+        return missingInt;
     }
 
     public static int secondMaxValue(int [] array) {
