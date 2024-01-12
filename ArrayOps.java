@@ -86,20 +86,27 @@ public class ArrayOps {
     }
 
     public static boolean isSorted(int [] array) {
+        // checks if is sorted increasingly or decreasingly
+        // if increasingly
         if (array[0] < array[1]) {
+            // check on each element of the array if it's bigger than the former element (except 0, which I already checked)
             for (int i = 1; i < array.length; i++) {
                 if (array[i] < array[i-1]) {
                     return false;
                 }
             }
+            // if the function didn't return false until now, means it's sorted increasingly, return true
             return true;
         }
+        // if decreasingly
         else
+        // check on each element of the array if it's smaller than the former element (except 0, which I already checked)
         for (int i = 1; i < array.length; i++) {
             if (array[i] > array[i-1]) {
                 return false;
             }
         }
+        // if the function didn't return false until now, means it's sorted decreasingly, return true
         return true;
     }
 

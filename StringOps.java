@@ -22,12 +22,36 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        
+        String check = "One two tHRee world";
+        System.out.println(capVowelsLowRest(check));
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        String newString = "";
+        for (int i = 0; i < string.length(); i++) {
+            switch (string.charAt(i)) {
+                case 97:
+                case 101:
+                case 105:
+                case 111:
+                case 117:
+                newString = newString + (char) (string.charAt(i) - 32);
+                break;
+                
+                case 32:
+                newString = newString + " ";
+                break;
+                
+                default:
+                if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+                    newString = newString + (char) (string.charAt(i) + 32);
+                }
+                else
+                newString = newString + (char) (string.charAt(i));
+                break;
+            }
+        }
+        return newString;
     }
 
     public static String camelCase (String string) {
