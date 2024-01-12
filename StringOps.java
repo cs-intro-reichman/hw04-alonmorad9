@@ -43,7 +43,7 @@ public class StringOps {
                 // cases of uppercase vowels chars
                 case 65:
                 case 69:
-                case 72:
+                case 73:
                 case 79:
                 case 85:
                 newString = newString + (char) (string.charAt(i));
