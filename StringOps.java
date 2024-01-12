@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class StringOps {
     ////////////////////////////////////////////////////////////
     //////                                               ///////
@@ -22,10 +24,12 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        String check = "HELLo world";
+        String check = "HELLo world ooo";
+        System.out.println(capVowelsLowRest(check));
         System.out.println(camelCase(check));
         System.out.println(camelCase(check));
-        printArray(allIndexOf(check, 'o'));
+        System.out.println(Arrays.toString(allIndexOf(check, 'o')));
+        
     }
 
     public static String capVowelsLowRest (String string) {
@@ -91,16 +95,21 @@ public class StringOps {
         }
         // creates the same string without the first word
         String stringWoFirstWord = string.substring(indexOfFirstSpace + 1, string.length());
+        // variable that says if former char was space
         boolean formerCharIsSpace = true;
         for (int i = 0; i < stringWoFirstWord.length(); i++) {
+            // if former char was space check the following conditions
             if (formerCharIsSpace) {
+                // if char is uppercase keep it the same as it is
                 if (stringWoFirstWord.charAt(i) >= 65 && stringWoFirstWord.charAt(i) <= 90 ) {
                     newString = newString + (char) (stringWoFirstWord.charAt(i));
                 } 
+                // if char is not space, transfer it to lowercase
                 else if (stringWoFirstWord.charAt(i) != 32){
                 newString = newString + (char) (stringWoFirstWord.charAt(i) - 32);
                 }
             }
+            // if former char wasn't space
             else {
             if (stringWoFirstWord.charAt(i) == 32) {
                 formerCharIsSpace = true;
@@ -140,14 +149,5 @@ public class StringOps {
             }
         }
         return indexes;
-    }
-
-    public static void printArray (int[] array) {
-        System.out.print("[");
-        for (int i = 0; i < array.length - 1; i++) {
-            System.out.print(array[i]);
-        }
-        System.out.print(array[array.length - 1] + "]");
-        System.out.println(); // Moves to the next line in the printing
     }
 }
