@@ -28,8 +28,10 @@ public class StringOps {
 
     public static String capVowelsLowRest (String string) {
         String newString = "";
+        // checks on each char of the string the following cases
         for (int i = 0; i < string.length(); i++) {
             switch (string.charAt(i)) {
+                // cases of lowercase vowels chars
                 case 97:
                 case 101:
                 case 105:
@@ -38,14 +40,27 @@ public class StringOps {
                 newString = newString + (char) (string.charAt(i) - 32);
                 break;
                 
+                // cases of uppercase vowels chars
+                case 65:
+                case 69:
+                case 72:
+                case 79:
+                case 85:
+                newString = newString + (char) (string.charAt(i));
+                break;
+                
+                // case of space char
                 case 32:
                 newString = newString + " ";
                 break;
                 
+                // in case of a regular char (non vowel and non space)
                 default:
+                // if it's uppercase turn it to lowercase
                 if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
                     newString = newString + (char) (string.charAt(i) + 32);
                 }
+                // if none of the conditions above exists, keep the char as it is
                 else
                 newString = newString + (char) (string.charAt(i));
                 break;
