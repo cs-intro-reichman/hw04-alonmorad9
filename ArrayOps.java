@@ -1,10 +1,11 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        int [] arr = {2,3,7,8};
+        int [] arr = {-12,2,3,7,8,8};
         int [] arr2 = {3,1,5,2,0,66,6};
         System.out.println(findMissingInt(arr));
         System.out.println(secondMaxValue(arr));
         System.out.println(containsTheSameElements(arr, arr2));
+        System.out.println(isSorted(arr));
     }
     
     public static int findMissingInt (int [] array) {
@@ -85,8 +86,21 @@ public class ArrayOps {
     }
 
     public static boolean isSorted(int [] array) {
-        // Write your code here:
-        return false;
+        if (array[0] < array[1]) {
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] < array[i-1]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > array[i-1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
