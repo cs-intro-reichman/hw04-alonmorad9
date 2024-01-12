@@ -1,6 +1,6 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        int [] arr = {6,0,1,2,3,3,3,5,2,0,6,66};
+        int [] arr = {2,3,7,8};
         int [] arr2 = {3,1,5,2,0,66,6};
         System.out.println(findMissingInt(arr));
         System.out.println(secondMaxValue(arr));
@@ -31,7 +31,7 @@ public class ArrayOps {
             // if the current number is bigger than the max number
             // set secondmax to max number
             // set max to current number
-            if (array[i] > maxV) {
+            if (array[i] > maxV || array[i] == maxV) {
                 secondMax = maxV;
                 maxV = array[i];
             }
