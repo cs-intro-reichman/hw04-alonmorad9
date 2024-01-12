@@ -22,8 +22,9 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        String check = "One two tHRee world";
-        System.out.println(capVowelsLowRest(check));
+        String check = "HELLO world";
+        System.out.println(camelCase(check));
+        System.out.println(camelCase(check));
     }
 
     public static String capVowelsLowRest (String string) {
@@ -70,9 +71,57 @@ public class StringOps {
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
+        String newString = "";
+        // cuts spaces in the begining of the sentence
+        while (string.charAt(0) == ' ') {
+            string = string.substring(1);
+        }
+        // finds the index of the first space (end of first word)
+        int indexOfFirstSpace = string.indexOf(" ");
+        // for each char of the first word check the following conditions
+        for (int i = 0; i < indexOfFirstSpace; i++) {
+            // if char is uppercase, turn it to lowercase
+            if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+                newString = newString + (char) (string.charAt(i) + 32);
+            }
+            // else keep it the same (lowercase)
+            else
+            newString = newString + (char) (string.charAt(i));
+        }
+        // creates the same string without the first word
+        String stringWoFirstWord = string.substring(indexOfFirstSpace + 1, string.length());
+        boolean formerCharIsSpace = true;
+        for (int i = 0; i < stringWoFirstWord.length(); i++) {
+            if (formerCharIsSpace) {
+                if (stringWoFirstWord.charAt(i) >= 65 && stringWoFirstWord.charAt(i) <= 90 ) {
+                    newString = newString + (char) (stringWoFirstWord.charAt(i));
+                } 
+                else if (stringWoFirstWord.charAt(i) != 32){
+                newString = newString + (char) (stringWoFirstWord.charAt(i) - 32);
+                }
+            }
+            else {
+            if (stringWoFirstWord.charAt(i) == 32) {
+                formerCharIsSpace = true;
+            }
+            else
+            formerCharIsSpace = false;
+             // if char is uppercase, turn it to lowercase
+             if (stringWoFirstWord.charAt(i) >= 65 && stringWoFirstWord.charAt(i) <= 90) {
+                newString = newString + (char) (stringWoFirstWord.charAt(i) + 32);
+            }
+            // else keep it the same (lowercase)
+            else if (stringWoFirstWord.charAt(i) != 32)
+            newString = newString + (char) (stringWoFirstWord.charAt(i));
+        }
+        if (stringWoFirstWord.charAt(i) == 32) {
+            formerCharIsSpace = true;
+        }
+        else
+        formerCharIsSpace = false;
     }
+        return newString;
+}
 
     public static int[] allIndexOf (String string, char chr) {
         // Write your code here:
