@@ -77,59 +77,33 @@ public class StringOps {
 
     public static String camelCase (String string) {
         String newString = "";
+        boolean nextcharuc = false;
         // cuts spaces in the begining of the sentence
         while (string.charAt(0) == ' ') {
             string = string.substring(1);
         }
-        // finds the index of the first space (end of first word)
-        int indexOfFirstSpace = string.indexOf(" ");
-        // for each char of the first word check the following conditions
-        for (int i = 0; i < indexOfFirstSpace; i++) {
-            // if char is uppercase, turn it to lowercase
-            if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == 32) {
+                nextcharuc = true;
+            }
+            else if (nextcharuc) {
+                nextcharuc = false;
+                if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+                    newString = newString + (char) (string.charAt(i) - 32);
+                }
+                else
+                newString = newString + (char) string.charAt(i);
+            }
+            else
+            {
+                nextcharuc = false;
+                if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+                    newString = newString + (char) string.charAt(i);
+                }
+                else
                 newString = newString + (char) (string.charAt(i) + 32);
             }
-            // else keep it the same (lowercase)
-            else
-            newString = newString + (char) (string.charAt(i));
         }
-        // creates the same string without the first word
-        String stringWoFirstWord = string.substring(indexOfFirstSpace + 1, string.length());
-        // variable that says if former char was space
-        boolean formerCharIsSpace = true;
-        for (int i = 0; i < stringWoFirstWord.length(); i++) {
-            // if former char was space check the following conditions
-            if (formerCharIsSpace) {
-                // if char is uppercase keep it the same as it is
-                if (stringWoFirstWord.charAt(i) >= 65 && stringWoFirstWord.charAt(i) <= 90 ) {
-                    newString = newString + (char) (stringWoFirstWord.charAt(i));
-                } 
-                // if char is not space, transfer it to lowercase
-                else if (stringWoFirstWord.charAt(i) != 32){
-                newString = newString + (char) (stringWoFirstWord.charAt(i) - 32);
-                }
-            }
-            // if former char wasn't space
-            else {
-            if (stringWoFirstWord.charAt(i) == 32) {
-                formerCharIsSpace = true;
-            }
-            else
-            formerCharIsSpace = false;
-             // if char is uppercase, turn it to lowercase
-             if (stringWoFirstWord.charAt(i) >= 65 && stringWoFirstWord.charAt(i) <= 90) {
-                newString = newString + (char) (stringWoFirstWord.charAt(i) + 32);
-            }
-            // else keep it the same (lowercase)
-            else if (stringWoFirstWord.charAt(i) != 32)
-            newString = newString + (char) (stringWoFirstWord.charAt(i));
-        }
-        if (stringWoFirstWord.charAt(i) == 32) {
-            formerCharIsSpace = true;
-        }
-        else
-        formerCharIsSpace = false;
-    }
         return newString;
 }
 
